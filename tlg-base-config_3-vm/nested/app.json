@@ -16,6 +16,9 @@
     },
     "configurationFunction": {
       "type": "object"
+    },
+    "appServerCustomScript": {
+      "type": "string"
     }
   },
   "variables": {},
@@ -174,6 +177,27 @@
           }
         },
         "protectedSettings": null
+      }
+    },
+    {
+      "type": "Microsoft.Compute/virtualMachines/extensions",
+      "apiVersion": "2015-06-15",
+      "name": "[concat(parameters('vmName'),'/CustomScriptExtension')]",
+      "location": "[parameters('SharedVmConfig').location]",
+      "dependsOn": [
+        "[parameters('vmName')]"
+      ],
+      "properties": {
+        "publisher": "Microsoft.Compute",
+        "type": "CustomScriptExtension",
+        "typeHandlerVersion": "1.9",
+        "autoUpgradeMinorVersion": true,
+        "settings": {
+            "fileUris": "[parameters('appServerCustomScript')]"
+        },
+        "protectedSettings": {
+            "commandToExecute": "[concat ('powershell -ExecutionPolicy Unrestricted -File InstallStuff.ps1')]"
+        }
       }
     }
   ],

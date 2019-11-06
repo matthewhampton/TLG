@@ -84,6 +84,7 @@
     "assetLocation": "[concat(parameters('_artifactsLocation'),'/DSC')]",
     "templates": "[concat(parameters('_artifactsLocation'),'/nested')]",
     "storageAccountName": "[concat(uniqueString(resourceGroup().id),'storage')]",
+    "appServerCustomScript": "[concat(parameters('_artifactsLocation'),'/scripts/InstallStuff.ps1')]",
 
     "network": {
       "vnetName": "[concat(parameters('configName'),'-VNET')]",
@@ -393,6 +394,9 @@
           },
           "configurationFunction": {
             "value": "[variables('VMs').appConfigurationFunction]"
+          },
+          "appServerCustomScript": {
+            "value": "[variables('appServerCustomScript')]"
           }
         }
       }
