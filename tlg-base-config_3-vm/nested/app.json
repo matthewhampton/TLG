@@ -193,7 +193,7 @@
         "typeHandlerVersion": "1.9",
         "autoUpgradeMinorVersion": true,
         "settings": {
-            "fileUris": "[parameters('appServerCustomScript')]"
+            "fileUris": ["[parameters('appServerCustomScript')]"]
         },
         "protectedSettings": {
             "commandToExecute": "[concat ('powershell -ExecutionPolicy Unrestricted -File InstallStuff.ps1')]"
