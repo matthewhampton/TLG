@@ -48,13 +48,6 @@
       },
       "defaultValue": "Yes"
     },
-    "clientVhdUri": {
-      "type": "string",
-      "metadata": {
-        "description": "The URI of the storage account containing the client VHD. Leave blank if you are not deploying a client VM."
-      },
-      "defaultValue": ""
-    },
     "vmSize": {
       "type": "string",
       "metadata": {
@@ -429,9 +422,6 @@
           },
           "nicName": {
             "value": "[concat(parameters('configName'),'-CLI_NIC')]"
-          },
-          "vhdUri": {
-            "value": "[parameters('clientVhdUri')]"
           }
         }
       }
