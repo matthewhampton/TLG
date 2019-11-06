@@ -20,22 +20,6 @@
   },
   "resources": [
     {
-      "type": "Microsoft.Compute/images",
-      "apiVersion": "2017-03-30",
-      "name": "[variables('ImageName')]",
-      "location": "[parameters('SharedVmConfig').location]",
-      "properties": {
-        "storageProfile": {
-          "osDisk": {
-            "osType": "Windows",
-            "osState": "Generalized",
-            "blobUri": "[concat(parameters('vhdUri'))]",
-            "storageAccountType": "Standard_LRS"
-          }
-        }
-      }
-    },
-    {
       "apiVersion": "2017-03-30",
       "type": "Microsoft.Compute/virtualMachines",
       "name": "[parameters('vmName')]",
@@ -54,7 +38,13 @@
         },
         "storageProfile": {
           "imageReference": {
-            "id": "[resourceId('Microsoft.Compute/images/',variables('ImageName'))]"
+              "publisher": "MicrosoftWindowsDesktop",
+              "offer": "Windows-10",
+              "sku": "rs5-pro",
+              "version": "latest"
+          },
+          "osDisk": {
+            "createOption": "FromImage"
           }
         },
         "networkProfile": {
