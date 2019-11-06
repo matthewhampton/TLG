@@ -10,13 +10,7 @@
     },
     "nicName": {
       "type": "string"
-    },
-    "vhdUri": {
-      "type": "string"
     }
-  },
-  "variables": {
-    "imageName": "[concat(parameters('vmName'),'-image')]"
   },
   "resources": [
     {
@@ -24,9 +18,6 @@
       "type": "Microsoft.Compute/virtualMachines",
       "name": "[parameters('vmName')]",
       "location": "[parameters('SharedVmConfig').location]",
-      "dependsOn": [
-        "[variables('ImageName')]"
-      ],
       "properties": {
         "hardwareProfile": {
           "vmSize": "[parameters('SharedVmConfig').vmSize]"

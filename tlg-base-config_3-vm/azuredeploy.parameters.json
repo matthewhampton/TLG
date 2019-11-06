@@ -6,7 +6,7 @@
       "value": "TlgBaseConfig-01"
     },
     "domainName": {
-      "value": "corp.contoso.com"
+      "value": "example.com"
     },
     "serverOS": {
       "value": "2016-Datacenter"
@@ -24,13 +24,13 @@
       "value": "yes"
     },
     "vmSize": {
-      "value": "Standard_DS2_v2"
+      "value": "Standard_B2s"
     },
     "dnsLabelPrefix": {
       "value": ""
     },
     "_artifactsLocation": {
-      "value": "https://raw.githubusercontent.com/maxskunkworks/tlg/master/tlg-base-config_3-vm"
+      "value": "https://raw.githubusercontent.com/matthewhampton/tlg/deploy-standard-win10-image/tlg-base-config_3-vm"
     },
     "_artifactsLocation": {
       "value": ""

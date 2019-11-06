@@ -17,20 +17,13 @@ The **3 VM Base Configuration** provisions a Windows Server 2012 R2 or 2016 Acti
 
 ![alt text](images/tlg-base-config_3-vm.png "Diagram of the base config deployment")
 
-**Note:** If you choose to deploy a client VM, you must upload a generalized Windows 10 VHD to an Azure storage account and provide the account name in the _clientVhdUri_ parameter. Note that SAS tokens are not supported, and the blob container must be configured for public read access.
-
-Use of a custom client image is required because the Windows 10 gallery image is only available in eligible subscriptions (Visual Studio or MSDN). The path to the VHD should resemble the following example:
-
-     https://<storage account name>.blob.core.windows.net/vhds/<vhdName>.vhd
-* For more information about eligible subscriptions, see https://docs.microsoft.com/en-us/azure/virtual-machines/windows/client-images#subscription-eligibility.
-* For more information about how to prepare a generalized VHD, see https://docs.microsoft.com/en-us/azure/virtual-machines/windows/prepare-for-upload-vhd-image.
 
 ## Usage
 
 You can deploy this template in one of two ways:
 
 + Click the "Deploy to Azure" button to open the deployment UI in the Azure portal
-+ Execute the PowerShell script at https://raw.githubusercontent.com/maxskunkworks/tlg/master/tlg-base-config_3-vm/scripts/Deploy-TLG.ps1 on your local computer.
++ Execute the PowerShell script at https://raw.githubusercontent.com/matthewhampton/tlg/deploy-standard-win10-image/tlg-base-config_3-vm/scripts/Deploy-TLG.ps1 on your local computer.
 
 Prior to deploying the template, have the following information ready:
 
