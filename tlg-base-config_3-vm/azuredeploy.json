@@ -84,7 +84,7 @@
     "assetLocation": "[concat(parameters('_artifactsLocation'),'/DSC')]",
     "templates": "[concat(parameters('_artifactsLocation'),'/nested')]",
     "storageAccountName": "[concat(uniqueString(resourceGroup().id),'storage')]",
-    "appServerCustomScript": "[concat(parameters('_artifactsLocation'),'/scripts/InstallStuff.ps1')]",
+    "scriptDir": "[concat(parameters('_artifactsLocation'),'/scripts')]",
 
     "network": {
       "vnetName": "[concat(parameters('configName'),'-VNET')]",
@@ -360,6 +360,9 @@
           },
           "configurationFunction": {
             "value": "[variables('VMs').adConfigurationFunction]"
+          },
+          "scriptDir": {
+            "value": "[variables('scriptDir')]"
           }
         }
       }
@@ -395,8 +398,8 @@
           "configurationFunction": {
             "value": "[variables('VMs').appConfigurationFunction]"
           },
-          "appServerCustomScript": {
-            "value": "[variables('appServerCustomScript')]"
+          "scriptDir": {
+            "value": "[variables('scriptDir')]"
           }
         }
       }

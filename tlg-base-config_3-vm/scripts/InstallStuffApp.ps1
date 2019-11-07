@@ -1,0 +1,1 @@
+cmd /c DISM /Online /NoRestart /Enable-Feature /FeatureName:NetFx3ServerFeatures

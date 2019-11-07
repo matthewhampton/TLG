@@ -17,7 +17,7 @@
     "configurationFunction": {
       "type": "object"
     },
-    "appServerCustomScript": {
+    "scriptDir": {
       "type": "string"
     }
   },
@@ -99,33 +99,6 @@
       ]
     },
     {
-      "type": "Microsoft.Compute/virtualMachines/extensions",
-      "name": "[concat(parameters('vmName'),'/AppConfig')]",
-      "apiVersion": "2017-03-30",
-      "location": "[parameters('SharedVmConfig').location]",
-      "dependsOn": [
-        "[parameters('vmName')]"
-      ],
-      "properties": {
-        "publisher": "Microsoft.Powershell",
-        "type": "DSC",
-        "typeHandlerVersion": "2.9",
-        "autoUpgradeMinorVersion": true,
-        "protectedSettings": {
-          "Items": {}
-        },
-        "settings": {
-          "modulesUrl": "[concat(parameters('modulesURL'),'/AppConfig.ps1.zip')]",
-          "sasToken": "[parameters('SharedVmConfig').SasToken]",
-          "wmfVersion": "latest",
-          "configurationFunction": "[parameters('configurationFunction').AppConfig]",
-          "Properties": {
-            "DomainName": "[parameters('SharedVmConfig').domainName]"
-          }
-        }
-      }
-    },
-    {
 
       "type": "Microsoft.Compute/virtualMachines/extensions",
       "name": "[concat(parameters('vmName'),'/BGInfo')]",
@@ -193,10 +166,10 @@
         "typeHandlerVersion": "1.9",
         "autoUpgradeMinorVersion": true,
         "settings": {
-            "fileUris": ["[parameters('appServerCustomScript')]"]
+            "fileUris": ["[concat(parameters('scriptDir'),'/InstallStuffApp.ps1')]"]
         },
         "protectedSettings": {
-            "commandToExecute": "[concat ('powershell -ExecutionPolicy Unrestricted -File InstallStuff.ps1')]"
+            "commandToExecute": "[concat ('powershell -ExecutionPolicy Unrestricted -File InstallStuffApp.ps1')]"
         }
       }
     }
