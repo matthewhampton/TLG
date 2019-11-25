@@ -1,4 +1,4 @@
-{
+﻿{
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
@@ -46,14 +46,7 @@
           },
           "osDisk": {
             "createOption": "FromImage"
-          },
-          "dataDisks": [
-            {
-              "createOption": "Empty",
-              "diskSizeGB": 20,
-              "lun": 0
-            }
-          ]
+          }
         },
         "networkProfile": {
           "networkInterfaces": [
