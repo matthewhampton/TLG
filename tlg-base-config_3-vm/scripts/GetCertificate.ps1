@@ -1,7 +1,9 @@
-#TODO: the computer needs permissions
-$enrollResult = Get-Certificate -SubjectName "CN=app1.example.com" -DnsName app1.example.com -Template "ExportableWebServer" -CertStoreLocation Cert:\LocalMachine\My
+certutil -pulse
 
-$mypwd = ConvertTo-SecureString -String "1234" -Force -AsPlainText
-Export-PfxCertificate -Cert $enrollResult.Certificate -FilePath "$PSScriptRoot\app1.pfx" -Password $mypwd 
+& 'C:\Program Files (x86)\j5\framework\bin\KeyManager.exe' create-csr -c ZA -s WC -l "Cape Town" -o "j5" --fqdn app1.example.com "$PSScriptRoot\app1.csr" "$PSScriptRoot\app1.key"
 
-& 'C:\Program Files (x86)\j5\framework\bin\KeyManager.exe' import-https-certificate .\app1.pfx --password 1234
+certreq -submit -attrib "CertificateTemplate:WebServer" "$PSScriptRoot\app1.csr" "$PSScriptRoot\app1.crt"
+
+& 'C:\Program Files (x86)\j5\framework\bin\KeyManager.exe' import-https-certificate "$PSScriptRoot\app1.key" "$PSScriptRoot\app1.crt"
+
+netsh advfirewall firewall add rule name = SQLPort dir = in protocol = tcp action = allow localport = 80,443 remoteip = localsubnet profile = DOMAIN,PRIVATE,PUBLIC
